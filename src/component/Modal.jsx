@@ -10,13 +10,19 @@ import SlideTree from "./SlideTree";
 import SlideFour from "./SlideFour";
 import LastSlide from "./LastSlide";
 
-export default function Modal() {
+export default function Modal(props) {
   const [show, setShow] = useState(false);
-
+  const closehandeler = (e) => {
+    if (e.target.id === "Container") props.setShowModal(false);
+  };
   return (
     <>
-      <div className=" fixed flex justify-center inset-0  items-center  bg-black bg-opacity-30 backdrop-blur-sm overflow-visible">
-        <div className=" w-8/12 h-2/3">
+      <div
+        onClick={closehandeler}
+        id="Container"
+        className=" fixed flex justify-center inset-0  items-center  bg-black bg-opacity-30 backdrop-blur-sm overflow-visible"
+      >
+        <div className="  w-8/12 h-2/3">
           {show ? (
             <LastSlide setShow={setShow} />
           ) : (
